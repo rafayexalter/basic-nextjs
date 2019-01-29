@@ -1,0 +1,39 @@
+@import './shared/fonts';
+@import './shared/header';
+@import './shared/index';
+
+html, body {
+    height:100%;
+    width:100%;
+    font-family: 'Montserrat', Helvetica;
+    color: #fff;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: #ececec;
+}
+
+.self-typed {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.base-page {
+    margin-top: 150px;
+}
+
+.clickable {
+    cursor: pointer;
+}

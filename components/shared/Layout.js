@@ -1,19 +1,15 @@
 import Header from "./Header";
 
-const Layout = ({ children, title }) => {
+const Layout = ({ children, className }) => {
+    
     return(
-        <div>
-            <h2>{title}</h2>
-
+        <div className="layout-container">
             <Header />
-
-            { children }
-            <style jsx global>{`
-                body{
-                    font-family: Arial;
-                }
-                `}
-            </style>
+            <main className={`cover ${className}`}>
+                <div className="wrapper">
+                    { children }
+                </div>
+            </main>
         </div>
     )
 }
