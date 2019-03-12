@@ -2,3 +2,4 @@
 /.next
 /.gitignore
 /.idea
+/server/config/dev.js

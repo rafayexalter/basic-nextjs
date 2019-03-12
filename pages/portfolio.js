@@ -23,7 +23,7 @@ class Portfolio extends React.Component {
         const { post } = this.props;
 
         return (
-        <Layout>
+        <Layout {...this.props.auth}>
             <p>Post ID: { post.id }</p>
             <h1>{ post.title }</h1>
             <p>{ post.body }</p>

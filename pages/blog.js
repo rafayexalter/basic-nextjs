@@ -8,10 +8,10 @@ const PostLink = (props) => (
         <a>{props.title}</a>
       </Link>
     </li>
-  )
+  );
 
 const Blog = () => (
-    <Layout>
+    <Layout {...this.props.auth}>
         <BasePage>
         <h1>My Blog</h1>
             <ul>
@@ -21,6 +21,6 @@ const Blog = () => (
             </ul>
         </BasePage>
     </Layout>
-)
+);
 
 export default Blog

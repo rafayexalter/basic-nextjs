@@ -1,10 +1,16 @@
 import Header from "./Header";
 
-const Layout = ({ children, className }) => {
+const Layout = (props) => {
+
+    const {children, className, isAuthenticated, user} = props;
+
+    const headerType = props.headerType || 'default';
     
     return(
         <div className="layout-container">
-            <Header />
+
+            <Header className={`port-nav-${headerType}`} isAuthenticated={isAuthenticated} user={user}/>
+
             <main className={`cover ${className}`}>
                 <div className="wrapper">
                     { children }
@@ -12,6 +18,6 @@ const Layout = ({ children, className }) => {
             </main>
         </div>
     )
-}
+};
 
 export default Layout;

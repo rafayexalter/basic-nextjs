@@ -46,9 +46,12 @@ export default class Header extends React.Component {
     });
   }
   render() {
+
+      const { isAuthenticated, user, className } = this.props;
+
     return (
       <div>
-        <Navbar className="port-navbar port-default absolute" color="transparent" dark expand="md">
+        <Navbar className={`port-navbar port-nav-base absolute ${className}`} color="transparent" dark expand="md">
           <NavbarBrand className="port-navbar-brand" href="/">Abdul Rafay</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -69,12 +72,17 @@ export default class Header extends React.Component {
                 <BsNavLink route="/about" title="About" />
                 </NavItem>
 
-                { !auth0.isAuthenticated() &&
+                { ! isAuthenticated &&
                     <NavItem className="port-navbar-item">
                         <Login/>
                     </NavItem>
                 }
-                { auth0.isAuthenticated() &&
+                { isAuthenticated &&
+                    <NavItem className="port-navbar-item">
+                        <span className="nav-link port-navbar-link">{user.name}</span>
+                    </NavItem>
+                }
+                { isAuthenticated &&
                     <NavItem className="port-navbar-item">
                         <Logout/>
                     </NavItem>
