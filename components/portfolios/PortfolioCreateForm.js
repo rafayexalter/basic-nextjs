@@ -57,6 +57,13 @@ const PortfolioCreateForm = (props) => (
                     component={PortfolioInput} />
 
                 <Field 
+                    type="text" 
+                    id="position" 
+                    name="position" 
+                    label="Position"
+                    component={PortfolioInput} />
+
+                <Field 
                     type="textarea" 
                     id="description" 
                     name="description" 

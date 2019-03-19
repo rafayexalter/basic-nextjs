@@ -3,6 +3,8 @@ import BasePage from '../components/shared/BasePage';
 import PortfolioCreateForm from '../components/portfolios/PortfolioCreateForm';
 import { Row, Col } from 'reactstrap';
 
+import { createPortfolio } from '../actions';
+
 import withAuth from '../components/hoc/withAuth';
 
 class PortfolioNew extends React.Component {
@@ -13,8 +15,12 @@ class PortfolioNew extends React.Component {
         this.savePortfolio = this.savePortfolio.bind(this);
     }
 
-    savePortfolio(portfolioDate) {
-        alert(JSON.stringify(portfolioDate, null, 2));
+    savePortfolio(portfolioData) {
+        createPortfolio(portfolioData)
+        .then((portfolio) => {
+            console.log(portfolio)
+        })
+        .catch((err) => { console.error(err) })
     }
 
     render() {
