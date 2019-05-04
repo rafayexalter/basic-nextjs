@@ -1,20 +1,21 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button, Alert } from 'reactstrap';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import PortfolioInput from '../form/PortfolioInput';
 import PortfolioDate from '../form/PortfolioDate';
+import moment from 'moment';
 
 const validateInputs = (values) => {
     let errors = {};
 
     Object.entries(values).forEach(( [ key, value ] ) => {
-        if( ! values[key] && values[key] === 'startDate' || values[key] === 'endDate' ) {
+        if( ! values[key] && key !== 'endDate' ) {
             errors[key] = `${key} is required.`
         }
     });
 
-    const startDate = values.startDate;
-    const endDate = values.endDate;
+    const startDate = moment(values.startDate);
+    const endDate = moment(values.endDate);
 
     if( startDate && endDate && endDate.isBefore(startDate) ) {
         errors.endDate = 'End Date cannot be before start date.';
@@ -23,14 +24,14 @@ const validateInputs = (values) => {
     return errors;
 }
 
-const INITIAL_VALUES = { title: '', company: '', location: '', position: '', description: '', startDate: '', endDate: '' };
 
-const PortfolioCreateForm = (props) => (
+
+const PortfolioCreateForm = ({initialValues, onSubmit, error}) => (
     <div>
         <Formik
-            initialValues={INITIAL_VALUES}
+            initialValues={initialValues}
             validate={validateInputs}
-            onSubmit={props.onSubmit}
+            onSubmit={onSubmit}
         >
             {({ isSubmitting }) => (
                 <Form>
@@ -69,18 +70,19 @@ const PortfolioCreateForm = (props) => (
                     name="description" 
                     label="Description"
                     component={PortfolioInput} />
-                    
 
                 <Field 
                     id="startDate" 
                     name="startDate" 
                     label="Start Date"
+                    initialDate={initialValues.startDate}
                     component={PortfolioDate} />
 
                 <Field 
                     id="endDate" 
                     name="endDate" 
                     label="End Date"
+                    initialDate={initialValues.endDate}
                     canBeDisabled={true}
                     component={PortfolioDate} />
 
@@ -88,9 +90,16 @@ const PortfolioCreateForm = (props) => (
                     Create
                 </Button>
 
+                { error && 
+                    <Alert color="danger">
+                        {error}
+                    </Alert>
+                }
+
                 </Form>
             )}
         </Formik>
+        
     </div>
 );
 

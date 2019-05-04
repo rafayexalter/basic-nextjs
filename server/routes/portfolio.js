@@ -9,6 +9,8 @@ router.post('',
 
 router.get('', portfolioController.getPortfolios);
 
+router.get('/:id', portfolioController.getPortfolioById);
+
 router.patch('/:id', 
             authService.checkJWT, 
             authService.checkRole('siteOwner'), portfolioController.updatePortfolio);

@@ -7,8 +7,11 @@ import "react-datepicker/dist/react-datepicker.css";
 export default class PortfolioDate extends React.Component {
   constructor(props) {
     super(props);
+
+    const dateValue = props.initialDate ? props.initialDate : new Date();
+
     this.state = {
-      dateValue: new Date(),
+      dateValue: dateValue,
       isHidden: false
     };
     this.handleChange = this.handleChange.bind(this);
