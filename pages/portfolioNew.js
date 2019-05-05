@@ -8,7 +8,7 @@ import { createPortfolio } from '../actions';
 import withAuth from '../components/hoc/withAuth';
 import { Router } from '../routes';
 
-const INITIAL_VALUES = { title: '', company: '', location: '', position: '', description: '', startDate: '', endDate: '' };
+const INITIAL_VALUES = { title: '', company: '', location: '', position: '', description: '', startDate: null, endDate: null };
 
 class PortfolioNew extends React.Component {
 
